@@ -1,0 +1,25 @@
+{
+    "source_file": "data_plans.json",
+    "created_at": "2026-04-27",
+    "total_raw_records": 3132,
+    "usable_clean_records": 297,
+    "duplicates_removed": 2784,
+    "excluded_missing_data": 369,
+    "excluded_missing_validity": 126,
+    "networks": {
+        "9MOBILE": 20,
+        "AIRTEL": 73,
+        "GLO": 64,
+        "MTN": 140
+    },
+    "plan_types": {
+        "SPECIAL": 62,
+        "CORPORATE GIFTING": 24,
+        "SME": 27,
+        "GIFTING": 148,
+        "TALKMORE": 4,
+        "MTN AWOOF": 18,
+        "DATA SHARE": 9,
+        "SME2": 5
+    }
+}

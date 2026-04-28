@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+Loan Interest Checker Nigeria - Know What You Will Really Pay
+{% endblock %}
+
+{% block description %}
+Check how much interest loan apps are charging you in Nigeria. Avoid overpaying with our loan reality checker.
+{% endblock %}
+
+{% block content %}
+
+<section class="tool-page">
+    <div class="tool-main">
+        <h1>Loan Reality Checker</h1>
+        <p class="page-intro">
+            Check how much interest a loan app is really charging you before you accept the loan.
+        </p>
+
+        <div class="tool-card large-card">
+            <form method="POST">
+                <label>Amount You Want to Borrow (₦)</label>
+                <input type="number" name="principal" placeholder="Example: 50000" required>
+
+                <label>Total Amount Loan App Says You Will Repay (₦)</label>
+                <input type="number" name="repayment" placeholder="Example: 65000" required>
+
+                <button type="submit">Check Loan</button>
+            </form>
+        </div>
+
+        <div class="result-card loan-result">
+            {% if result %}
+            <h3>Loan Breakdown</h3>
+
+            <div class="result-row">
+                <span>You borrowed</span>
+                <strong>₦{{ "{:,.2f}".format(result.principal) }}</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Total repayment</span>
+                <strong>₦{{ "{:,.2f}".format(result.repayment) }}</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Interest paid</span>
+                <strong>₦{{ "{:,.2f}".format(result.interest_paid) }}</strong>
+            </div>
+
+            <div class="result-highlight">
+                <span>Real interest rate</span>
+                <strong>{{ "{:,.2f}".format(result.interest_rate) }}%</strong>
+            </div>
+
+            <div class="verdict-box">
+                {{ result.verdict }}
+            </div>
+            {% else %}
+            Your loan breakdown will appear here.
+            {% endif %}
+        </div>
+        <div class="ad-banner">
+            Ad Space
+        </div>
+    </div>
+
+    <aside class="ad-sidebar">
+        Ad space
+    </aside>
+</section>
+
+{% endblock %}

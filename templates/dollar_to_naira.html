@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dollar to Naira Converter (Live Rate) - Nigeria
+{% endblock %}
+
+{% block description %}
+Convert dollar to naira instantly using the latest exchange rate in Nigeria.
+{% endblock %}
+
+{% block content %}
+
+<section class="tool-page">
+    <div class="tool-main">
+        <h1>Dollar to Naira Converter</h1>
+        <p class="page-intro">Convert USD to NGN quickly using a simple estimated rate.</p>
+
+        <div class="tool-card large-card">
+            <form method="POST">
+                <label for="direction">Conversion Type</label>
+                <select id="direction" name="direction">
+                    <option value="usd-to-ngn">Dollar to Naira</option>
+                    <option value="ngn-to-usd">Naira to Dollar</option>
+                </select>
+
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount e.g. 100" required>
+
+                <p class="rate-note">Current rate: $1 = ₦{{ rate }}</p>
+
+                <button type="submit">Convert</button>
+            </form>
+        </div>
+
+        <div class="result-card">
+            {% if result %}
+            {{ result }}
+            {% else %}
+            Result will appear here
+            {% endif %}
+        </div>
+        <div class="ad-banner">
+            Ad Space
+        </div>
+    </div>
+
+    <aside class="ad-sidebar">
+        <p>Ad space</p>
+    </aside>
+</section>
+
+{% endblock %}

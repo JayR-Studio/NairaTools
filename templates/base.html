@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NairaTools - Smart Tools for Nigerians{% endblock %}</title>
+
+    <meta name="description"
+          content="{% block description %}Find the best data plans, check loan interest, and convert currency easily in Nigeria.{% endblock %}">
+
+    <meta name="keywords"
+          content="data plans Nigeria, MTN data plan, Airtel data plan, loan calculator Nigeria, dollar to naira">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">NairaTools</div>
+
+        <button class="menu-toggle" id="menu-toggle">
+            ☰
+        </button>
+
+        <div class="nav-links" id="nav-links">
+            <a href="/">Home</a>
+            <a href="{{ url_for('dollar_to_naira') }}">Dollar to Naira</a>
+            <a href="{{ url_for('data_plans')}}">Data Plans</a>
+            <a href="{{ url_for('loan_calculator')}}">Loan Calculator</a>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

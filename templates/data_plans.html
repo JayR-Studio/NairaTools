@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}
+Best Data Plans in Nigeria (MTN, Airtel, Glo, 9mobile) 2026
+{% endblock %}
+
+{% block description %}
+Compare latest MTN, Airtel, Glo and 9mobile data plans in Nigeria. Find the cheapest and best data plan for your budget.
+{% endblock %}
+
+{% block content %}
+
+<section class="tool-page">
+    <div class="tool-main">
+        <h1>MTN, Airtel, Glo & 9mobile Data Plans in Nigeria (2026)</h1>
+        <p class="page-intro">
+            Compare MTN, Airtel, Glo, and 9mobile data plans and find the best option for your budget.
+        </p>
+        <div class="ad-banner">
+            Ad Space (728x90)
+        </div>
+        <div class="tool-card large-card adviser-card">
+            <form method="GET">
+                <h3>Find the Best Data Plan for You</h3>
+                <p class="adviser-text">
+                    Answer a few questions and we’ll recommend a plan that fits your budget.
+                </p>
+
+                <div class="adviser-grid">
+                    <div>
+                        <label>Your Budget</label>
+                        <select name="budget" required>
+                            <option value="">Select budget</option>
+                            <option value="500">₦500</option>
+                            <option value="1000">₦1,000</option>
+                            <option value="2000">₦2,000</option>
+                            <option value="5000">₦5,000</option>
+                            <option value="10000">₦10,000</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>What do you need it for?</label>
+                        <select name="usage" required>
+                            <option value="">Select usage</option>
+                            <option value="social">Social media / WhatsApp</option>
+                            <option value="browsing">General browsing</option>
+                            <option value="streaming">YouTube / Streaming</option>
+                            <option value="heavy">Heavy downloads</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Preferred Network</label>
+                        <select name="preferred_network">
+                            <option value="all">Any Network</option>
+                            <option value="MTN">MTN</option>
+                            <option value="AIRTEL">AIRTEL</option>
+                            <option value="GLO">GLO</option>
+                            <option value="9MOBILE">9MOBILE</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Validity</label>
+                        <select name="adviser_validity">
+                            <option value="all">Any Validity</option>
+                            {% for valid in validity %}
+                            <option value="{{ valid }}">{{ valid }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit">Recommend Best Plan</button>
+            </form>
+        </div>
+
+        {% if advice_result %}
+        <div class="result-card adviser-result">
+            <h3>Recommended Plan</h3>
+
+            <div class="result-highlight">
+                <span>{{ advice_result.plan.network }}</span>
+                <strong>{{ advice_result.plan.data_label }}</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Plan</span>
+                <strong>{{ advice_result.plan.plan_name }}</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Price</span>
+                <strong>₦{{ "{:,.0f}".format(advice_result.plan.price) }}</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Validity</span>
+                <strong>{{ advice_result.plan.validity_label }}</strong>
+            </div>
+
+            <div class="verdict-box">
+                {{ advice_result.reason }}
+            </div>
+        </div>
+        {% endif %}
+        <div class="ad-banner">
+            Ad Space (Responsive)
+        </div>
+
+        <div class="filter-buttons">
+            {% for network in networks %}
+            <a href="{{ url_for('data_plans', network=network) }}"
+               class="filter-btn {% if selected_network == network %}active{% endif %}">
+                {{ network|capitalize if network == "all" else network }}
+            </a>
+            {% endfor %}
+        </div>
+        <div class="filter-bar">
+
+            <form method="GET" class="filter-form">
+
+                <!-- Keep network -->
+                <input type="hidden" name="network" value="{{ selected_network }}">
+
+                <!-- TYPE -->
+                <div class="filter-group">
+                    <label>Plan Type:</label>
+                    <select name="type" onchange="this.form.submit()">
+                        <option value="all">All Types</option>
+
+                        {% for type in types %}
+                        <option value="{{ type }}"
+                                {% if selected_type== type %}selected{% endif %}>
+                            {{ type }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- VALIDITY -->
+                <div class="filter-group">
+                    <label>Validity:</label>
+                    <select name="validity" onchange="this.form.submit()">
+                        <option value="all">All</option>
+
+                        {% for valid in validity %}
+                        <option value="{{ valid }}"
+                                {% if selected_validity== valid %}selected{% endif %}>
+                            {{ valid }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="table-card network-{{ selected_network|lower }}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Network</th>
+                    <th>Plan</th>
+                    <th>Price</th>
+                    <th>Data</th>
+                    <th>Valid For</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for plan in plans %}
+                <tr class="network-row network-{{ plan.network|lower }}">
+                    <td>{{ plan.network }}</td>
+                    <td>{{ plan.plan_name }}</td>
+                    <td>₦{{ "{:,.0f}".format(plan.price) }}</td>
+                    <td>{{ plan.data_label }}</td>
+                    <td>{{ plan.validity_label }}</td>
+                </tr>
+                {% if loop.index == 5 %}
+                <tr>
+                    <td colspan="5">
+                        <div class="ad-inline">
+                            Ad Space (In-table)
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <aside class="ad-sidebar">
+        <div class="ad-vertical">
+            Ad Space (300x250)
+        </div>
+    </aside>
+</section>
+
+{% endblock %}
