@@ -51,7 +51,7 @@ def contact():
 
 @app.route("/dollar-to-naira", methods=["GET", "POST"])
 def dollar_to_naira():
-    rate = USD_NGN_RATE
+    rate = get_usd_to_ngn_rate()
     result = None
 
     if request.method == "POST":
