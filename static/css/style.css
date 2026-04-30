@@ -13,6 +13,12 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 .page-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -31,6 +37,7 @@ body {
 .navbar {
     background: #0A2540;
     padding: 18px 24px;
+    width: 100%;
 }
 
 .nav-container {
@@ -752,10 +759,12 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     overflow-x: auto;
+    width: 100%;
 }
 
 .table-card table {
     width: 100%;
+    min-width: 650px;
     border-collapse: collapse;
 }
 
@@ -1440,4 +1449,60 @@ body {
     }
 }
 
-/*    Hero Image style  */
+/*    Mobile Rule style  */
+@media (max-width: 768px) {
+    .home-section,
+    .tool-page,
+    .info-page {
+        width: calc(100% - 32px);
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .tool-main h1,
+    .info-hero h1,
+    .hero-new h1 {
+        font-size: 30px;
+        line-height: 1.2;
+        word-break: normal;
+    }
+
+    .page-intro {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+}
+
+.tool-card,
+.result-card,
+.ad-banner,
+.table-card,
+.info-card {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .adviser-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+}
