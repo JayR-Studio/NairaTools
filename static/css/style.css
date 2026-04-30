@@ -1614,3 +1614,10 @@ button {
     color: #CBD5E1;
     font-size: 14px;
 }
+
+body.ads-not-ready .ad-banner,
+body.ads-not-ready .ad-sidebar,
+body.ads-not-ready .home-ad-box,
+body.ads-not-ready .ad-inline {
+    display: none;
+}
