@@ -634,7 +634,11 @@ body {
 
 @media (max-width: 768px) {
     .tool-page {
-        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        margin: 32px auto 0;
+        box-sizing: border-box;
     }
 
     .ad-sidebar {
@@ -1504,5 +1508,65 @@ button {
 
     .logo {
         font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tool-main h1 {
+        font-size: 32px;
+        line-height: 1.15;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: normal;
+    }
+
+    .tool-main {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .tool-card,
+    .large-card,
+    .adviser-card,
+    .result-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .adviser-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .adviser-grid select,
+    .large-card input,
+    .large-card select,
+    .large-card button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ad-banner {
+        width: 100%;
+        padding: 16px;
+        font-size: 14px;
+        overflow: hidden;
+    }
+}
+
+.mobile-title {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-title {
+        display: none;
+    }
+
+    .mobile-title {
+        display: inline;
     }
 }
