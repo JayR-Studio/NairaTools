@@ -5,64 +5,174 @@
 {% block description %}
 Compare MTN, Airtel, Glo and 9mobile data plans. Check loan interest and convert dollar to naira easily.
 {% endblock %}
+<div class="page-wrapper">
+    {% block content %}
+    <section class="hero-new home-section">
+        <div class="hero-content">
 
-{% block content %}
+            <div class="hero-text">
+                <h1>
+                    Will Your <span class="highlight">Salary</span><br>
+                    Last This Month?
+                </h1>
 
-<section class="hero hero-bg">
+                <p class="hero-sub">
+                    Find out if your income can survive your expenses, loans, and lifestyle before the month ends.
+                </p>
 
-    <h1>Find the Cheapest Data Plan in Nigeria Instantly</h1>
+                <a href="{{ url_for('salary_survival') }}" class="btn hero-btn primary-btn">
+                    Check Your Salary Survival
+                </a>
 
-    <p class="hero-sub">
-        Compare MTN, Airtel, Glo & 9mobile data plans, check loan interest, and make smarter financial decisions.
-    </p>
+                <div class="trending">
+                    <span>Also try:</span>
+                    <a href="{{ url_for('data_plans') }}">Data Plans</a>
+                    <a href="{{ url_for('loan_calculator') }}">Loan Checker</a>
+                    <a href="{{ url_for('dollar_to_naira') }}">Dollar Rate</a>
+                </div>
+            </div>
 
-    <a href="{{ url_for('data_plans') }}" class="btn hero-btn">
-        Try Data Plan Finder
-    </a>
+            <div class="hero-image-wrap">
+                <div class="hero-image-wrap">
+                    <img
+                            src="{{ url_for('static', filename='images/hero-image-yes.png') }}"
+                            alt="Salary will last the month"
+                            class="hero-answer-image active"
+                    >
 
-</section>
+                    <img
+                            src="{{ url_for('static', filename='images/hero-image-no.png') }}"
+                            alt="Salary may not last the month"
+                            class="hero-answer-image"
+                    >
+                </div>
+            </div>
 
-<div class="ad-banner">
-    Ad Space
-</div>
-
-<section class="main-tool main-bg">
-    <div class="main-container">
-        <div class="tool-highlight">
-            <h2>Best Data Plan Finder</h2>
-            <p>Answer a few questions and get the best plan for your budget.</p>
-
-            <a href="{{ url_for('data_plans') }}" class="btn">
-                Find My Plan
-            </a>
         </div>
+    </section>
+    <div class="ad-banner">
+        Ad Space
     </div>
 
-</section>
+    <section class="popular-section home-section">
 
-<section class="tools-grid tools-bg">
+        <div class="section-header">
+            <h2>Popular Tools</h2>
+        </div>
 
-    <div class="tool-card">
-        <h3>Loan Reality Checker</h3>
-        <p>See how much interest loan apps are really charging you.</p>
-        <a href="{{ url_for('loan_calculator') }}" class="btn">Check Loan</a>
+        <div class="popular-layout">
+
+            <div class="popular-tools">
+                <div class="tool-card featured-tool">
+
+                    <img src="{{ url_for('static', filename='icons/salary.png') }}" class="tool-icon">
+
+                    <h3>Salary Survival Calculator</h3>
+                    <p>Check if your salary can last till the end of the month.</p>
+
+                    <a href="{{ url_for('salary_survival') }}" class="btn">
+                        Check Now →
+                    </a>
+
+                </div>
+
+                <div class="tool-card">
+                    <img src="{{ url_for('static', filename='icons/dollar.png') }}" class="tool-icon">
+
+                    <h3>Dollar to Naira</h3>
+                    <p>Check the latest dollar to naira exchange rate instantly.</p>
+                    <a href="{{ url_for('dollar_to_naira') }}" class="btn">Check Rate →</a>
+                </div>
+
+                <div class="tool-card">
+                    <img src="{{ url_for('static', filename='icons/data.png') }}" class="tool-icon">
+
+                    <h3>Data Plan Finder</h3>
+                    <p>Compare data plans and find the best option for your budget.</p>
+                    <a href="{{ url_for('data_plans') }}" class="btn">View Plans →</a>
+                </div>
+
+                <div class="tool-card">
+                    <img src="{{ url_for('static', filename='icons/loan.png') }}" class="tool-icon">
+
+                    <h3>Loan Reality Checker</h3>
+                    <p>Check how much interest a loan app is really charging you.</p>
+                    <a href="{{ url_for('loan_calculator') }}" class="btn">Check Loan →</a>
+                </div>
+
+            </div>
+
+            <aside class="home-ad-box">
+                Advertisement
+            </aside>
+
+        </div>
+
+    </section>
+    <div class="ad-banner">
+        Ad Space
     </div>
+    <section class="trust-strip home-section">
+        <div class="trust-item">
+            <div class="trust-icon">🛡️</div>
+            <div>
+                <h4>Accurate & Updated</h4>
+                <p>Our data is updated multiple times daily.</p>
+            </div>
+        </div>
 
-    <div class="tool-card">
-        <h3>Dollar to Naira</h3>
-        <p>Convert USD to NGN instantly using current rates.</p>
-        <a href="{{ url_for('dollar_to_naira') }}" class="btn">Convert</a>
-    </div>
+        <div class="trust-item">
+            <div class="trust-icon">⚡</div>
+            <div>
+                <h4>Fast Results</h4>
+                <p>Get instant results in just one click.</p>
+            </div>
+        </div>
 
-</section>
+        <div class="trust-item">
+            <div class="trust-icon">🔒</div>
+            <div>
+                <h4>100% Free</h4>
+                <p>All our tools are free to use, always.</p>
+            </div>
+        </div>
 
-<section class="trust-section trust-bg">
+        <div class="trust-item">
+            <div class="trust-icon">👥</div>
+            <div>
+                <h4>Trusted by Thousands</h4>
+                <p>Join thousands of users who trust NairaTools.</p>
+            </div>
+        </div>
+    </section>
 
-    <p>
-        NairaTools helps Nigerians make smarter financial decisions by comparing real data plans,
-        analyzing loan costs, and providing simple tools you can trust.
-    </p>
+    <section class="home-info-grid home-section">
 
-</section>
+        <div class="rate-preview">
+            <div class="section-mini-header">
+                <h3>Latest Dollar Rate</h3>
+                <a href="{{ url_for('dollar_to_naira') }}">View more →</a>
+            </div>
 
-{% endblock %}
+            <div class="rate-card">
+                <p>USD to NGN</p>
+                <h2>₦ {{ rate }}</h2>
+                <small>Updates every 6 hours</small>
+            </div>
+        </div>
+
+        <div class="used-tools">
+            <div class="section-mini-header">
+                <h3>Most Used Tools</h3>
+            </div>
+
+            <div class="used-tool"><span>1</span> Salary Survival</div>
+            <div class="used-tool"><span>2</span> Data Plan Finder</div>
+            <div class="used-tool"><span>3</span> Dollar to Naira</div>
+        </div>
+
+    </section>
+
+
+    {% endblock %}
+</div>

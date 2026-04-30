@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}
+Salary Survival Calculator Nigeria - Can Your Salary Last This Month?
+{% endblock %}
+
+{% block description %}
+Check if your Nigerian salary can last till month end after loan repayment and essential expenses.
+{% endblock %}
+
+<div class="page-wrapper">
+    {% block content %}
+
+    <section class="tool-layout">
+        <div class="tool-main">
+            <h1>Salary Survival Calculator</h1>
+            <p class="page-intro">
+                Find out if your salary can last this month after loans, bills, and essential expenses.
+            </p>
+
+            <div class="tool-card large-card">
+                <form method="POST">
+                    <label>Monthly Salary (₦)</label>
+                    <input type="number" name="salary" placeholder="Example: 250000" required>
+
+                    <label>Essentials (₦)</label>
+                    <input type="number" name="essentials" placeholder="Food, transport, rent, bills" required>
+
+                    <label>Obligations (₦)</label>
+                    <input type="number" name="obligations" placeholder="Loans, contributions, family support" required>
+
+                    <label>Lifestyle / Extras (₦)</label>
+                    <input type="number" name="lifestyle" placeholder="Eating out, subscriptions, impulse spending"
+                           value="0">
+
+                    <button type="submit">Calculate My Survival</button>
+                </form>
+            </div>
+
+            {% if result %}
+            <div class="result-card salary-result">
+                <h3>Your Survival Result</h3>
+
+                <div class="survival-status {{ result.status_class }}">
+                    <span>{{ result.status }}</span>
+                    <strong>₦{{ "{:,.0f}".format(result.amount_left) }}</strong>
+                    <small>Amount left after expenses</small>
+                </div>
+
+                <div class="insight-box">
+                    <span class="insight-label">Insight</span>
+                    <p>{{ result.brutal_truth }}</p>
+                </div>
+
+                <div class="result-row">
+                    <span>Monthly Salary</span>
+                    <strong>₦{{ "{:,.0f}".format(result.salary) }}</strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Total Expenses</span>
+                    <strong>₦{{ "{:,.0f}".format(result.total_expenses) }}</strong>
+                </div>
+
+                <div class="result-highlight">
+                    <span>Weekly survival money</span>
+                    {% if result.weekly_amount is not none %}
+                    <strong>₦{{ "{:,.0f}".format(result.weekly_amount) }}</strong>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if result.weeks %}
+            <div class="result-card">
+                <h3>Weekly Breakdown</h3>
+
+                {% for week in result.weeks %}
+                <div class="result-row">
+                    <span>Week {{ week.week }}</span>
+                    <strong>
+                        ₦{{ "{:,.0f}".format(week.balance) }} - {{ week.status }}
+                    </strong>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if result.leaks %}
+            <div class="result-card leak-card">
+                <span class="insight-label">Leak Analysis</span>
+
+                {% for leak in result.leaks %}
+                <div class="leak-item {{ leak.severity }}">
+                    <h4>{{ leak.title }}</h4>
+                    <p>{{ leak.message }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="result-card leak-card">
+                <span class="insight-label">Leak Analysis</span>
+                <p class="no-leak-text">
+                    No major leaks detected. Your salary structure looks reasonably balanced.
+                </p>
+            </div>
+            {% endif %}
+
+            <div class="result-card action-card">
+                <span class="insight-label">Recommendation</span>
+                <p>{{ result.way_out }}</p>
+            </div>
+
+            <div class="ad-banner">
+                Ad Space
+            </div>
+            {% endif %}
+        </div>
+        <aside class="ad-sidebar">
+            <div class="ad-vertical">Ad Space</div>
+        </aside>
+    </section>
+
+    {% endblock %}
+</div>

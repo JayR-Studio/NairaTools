@@ -17,6 +17,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 </head>
 <body>
 
@@ -34,6 +35,9 @@
             <a href="{{ url_for('dollar_to_naira') }}">Dollar to Naira</a>
             <a href="{{ url_for('data_plans')}}">Data Plans</a>
             <a href="{{ url_for('loan_calculator')}}">Loan Calculator</a>
+            <a href="{{ url_for('salary_survival') }}">Salary Survival</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
         </div>
     </div>
 </nav>
@@ -46,4 +50,22 @@
 
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <h3>NairaTools</h3>
+            <p>Smart financial tools for everyday Nigerians.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="#">Privacy</a>
+        </div>
+
+    </div>
+
+</footer>
 </html>
