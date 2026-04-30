@@ -49,6 +49,13 @@ def contact():
     return render_template("contact.html")
 
 
+@app.context_processor
+def inject_current_year():
+    return {
+        "current_year": datetime.now().year
+    }
+
+
 @app.route("/dollar-to-naira", methods=["GET", "POST"])
 def dollar_to_naira():
     rate = get_usd_to_ngn_rate()
